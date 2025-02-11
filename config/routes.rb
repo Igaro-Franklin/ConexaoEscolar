@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :alunos, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :professor
   resources :materia
-  resources :turma
+  resources :turmas, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :sala
 
   # get 'dashboard', to: 'dashboard#index'
