@@ -17,6 +17,21 @@ class AlunosController < ApplicationController
     end
   end
 
+  def edit
+    @aluno = Aluno.find(params[:id])
+  end
+
+  def update
+    @aluno = Aluno.find(params[:id])
+
+    if @aluno.update(aluno_params)
+      redirect_to alunos_path, notice: "Aluno atualizado com sucesso!"
+    else
+      render :edit
+    end
+
+  end
+
   private
 
   def aluno_params

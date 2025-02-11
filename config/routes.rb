@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "pages#home"
 
-  resources :alunos, only: [ :index, :new, :create ]
+  resources :alunos, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :professor
   resources :materia
   resources :turma
