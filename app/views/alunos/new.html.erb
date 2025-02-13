@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :turma_id, "Turma" %>
-    <%= form.collection_select :turma_id, Turma.all, :id, :nome, { prompt: "Selecione uma turma" }, { class: "form-control" } %>
+    <%= form.collection_select :turma_id, Turma.all, :id, lambda { |turma| "#{turma.serie} Série - #{turma.nome} " }, { prompt: "Selecione uma turma" }, { class: "form-control" } %>
   </div>
 
   <div class="actions">

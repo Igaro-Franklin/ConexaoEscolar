@@ -1,6 +1,10 @@
 class AlunosController < ApplicationController
   def index
-    @alunos = Aluno.all
+    @alunos = if params[:order]
+      Aluno.order(params[:order])
+    else
+      Aluno.all
+    end
   end
 
   def new
@@ -29,7 +33,6 @@ class AlunosController < ApplicationController
     else
       render :edit
     end
-
   end
 
   private
