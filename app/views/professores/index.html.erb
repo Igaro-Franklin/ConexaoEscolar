@@ -1,2 +1,25 @@
-<h1>Professores#index</h1>
-<p>Find me in app/views/professores/index.html.erb</p>
+<h1>Lista de Professores(as)</h1>
+
+<%= link_to "Cadastrar Professor", new_professore_path, class: "btn btn-primary mb-3" %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Materia</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @professores.each do |professor| %>
+            <tr>
+                <td><%= professor.nome %></td>
+                <td><%= professor.especializacao %></td>
+                <td>
+                    <%= link_to "Editar", edit_professore_path(professor), class: "btn btn-warning" %>
+                    <%= link_to "Excluir", professore_path(professor), method: :delete, data: { confirm: "Você tem certeza?" }, class: "btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

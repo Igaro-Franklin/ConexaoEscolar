@@ -18,6 +18,21 @@ class TurmasController < ApplicationController
     end
   end
 
+  def edit
+    @turma = Turma.find(params[:id])
+  end
+
+  def update
+    @turma = Turma.find(params[:id])
+
+    if @turma.update(turma_params)
+      redirect_to turmas_path, notice: "Turma atualizada com sucesso!"
+    else
+      flash.now[:alert] = "Erro ao atualizar turma. Verifique os campos."
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   private
   def turma_params

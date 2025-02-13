@@ -2,11 +2,8 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :alunos, only: [ :index, :new, :create, :edit, :update, :destroy ]
-  resources :professor
-  resources :materia
+  resources :professores, only: [ :index, :new, :create, :edit, :update, :destroy ]
+  resources :materias, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :turmas, only: [ :index, :new, :create, :edit, :update, :destroy ]
-  resources :sala
-
-  # get 'dashboard', to: 'dashboard#index'
-  # resources :alunos, :professores, :turmas, :materias, :salas
+  resources :salas, only: [ :index, :new, :create, :edit, :update, :destroy ]
 end

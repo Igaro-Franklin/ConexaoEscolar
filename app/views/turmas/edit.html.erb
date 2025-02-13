@@ -1,2 +1,23 @@
-<h1>Turmas#edit</h1>
-<p>Find me in app/views/turmas/edit.html.erb</p>
+<h1>Editar Turma</h1>
+
+<%= form_with model: @turma, url: turma_path(@turma), method: :patch, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :serie, "Série" %>
+    <%= f.text_field :serie, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :nome, "Nome" %>
+    <%= f.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :professor_id, "Prof. Padrinho(a)" %>
+    <%= f.collection_select :professor_id, Professor.all, :id, :nome, { prompt: "Selecione um professor" }, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Atualizar", class: "btn btn-success" %>
+    <%= link_to "Cancelar", turmas_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

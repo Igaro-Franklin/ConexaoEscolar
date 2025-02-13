@@ -1,2 +1,17 @@
-<h1>Professores#new</h1>
-<p>Find me in app/views/professores/new.html.erb</p>
+<h1>Cadastrar Professor(a)</h1>
+
+<%= form_with(model: @professor, url: professores_path, local: true) do |form| %>
+    <div class="field">
+        <%= form.label :nome %>
+        <%= form.text_field :nome, class: "form-control" %>
+    </div>
+    <div class="field">
+        <%= form.label :especializacao%>
+        <%= form.text_field :especializacao, class: "form-control" %>
+    </div>
+    <div class="field">
+        <%= form.submit "Cadastrar", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<%= link_to "Voltar", professores_path, class: "btn btn-secondary" %>

@@ -1,2 +1,16 @@
-<h1>Professores#edit</h1>
-<p>Find me in app/views/professores/edit.html.erb</p>
+<h1>Editar Professor</h1>
+
+<%= form_with model: @professor, url: professore_path(@professor), method: :patch, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :nome, "Nome" %>
+    <%= f.text_field :nome, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :especializacao, "Especialização" %>
+    <%= f.text_field :especializacao, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Atualizar", class: "btn btn-success" %>
+  <%= link_to "Cancelar", professores_path, class: "btn btn-secondary" %>
+<% end %>
