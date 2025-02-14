@@ -1,2 +1,26 @@
-<h1>Salas#index</h1>
-<p>Find me in app/views/salas/index.html.erb</p>
+<h1>Lista de Salas</h1>
+<%= link_to "Nova Sala", new_sala_path, class: "btn btn-primary" %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Capacidade</th>
+            <th>Turma</th>
+            <th>Ações</th>
+        <tr>
+    <thead>
+        <tbody>
+            <%= @salas.each do |sala| %>
+                <tr>
+                    <td><%= sala.numero %></td>
+                    <td><%= sala.capacidade %></td>
+                    <td><%= sala.turma %></td>
+                    <td>
+                        <%= link_to "Editar", edit_sala_path(sala), class: "btn btn-warning btn-sm" %>
+                        <%= link_to "Excluir", sala, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+</table>
