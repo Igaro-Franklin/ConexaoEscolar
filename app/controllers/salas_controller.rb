@@ -21,11 +21,11 @@ class SalasController < ApplicationController
   end
 
   def edit
-    @sala = Sala.foind(params[:id])
+    @sala = Sala.find(params[:id])
   end
 
   def update
-    @salas = Sala.find(params[:id])
+    @sala = Sala.find(params[:id])
 
     if @sala.update(sala_params)
       redirect_to salas_path, notice: "Sala atualizada com sucesso!"

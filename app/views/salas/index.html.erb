@@ -11,11 +11,11 @@
         <tr>
     <thead>
         <tbody>
-            <%= @salas.each do |sala| %>
+            <% @salas.each do |sala| %>
                 <tr>
                     <td><%= sala.numero %></td>
                     <td><%= sala.capacidade %></td>
-                    <td><%= sala.turma %></td>
+                    <td><%= "#{sala.turma.serie} #{sala.turma.nome}" if sala.turma %></td>
                     <td>
                         <%= link_to "Editar", edit_sala_path(sala), class: "btn btn-warning btn-sm" %>
                         <%= link_to "Excluir", sala, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>

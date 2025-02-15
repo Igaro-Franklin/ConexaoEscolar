@@ -1,2 +1,22 @@
-<h1>Salas#new</h1>
-<p>Find me in app/views/salas/new.html.erb</p>
+<h1>Cadastrar Sala</h1>
+
+<%= form_with(model: @sala, local: true) do |form| %>
+    <div>
+        <%= form.label :numero %>
+        <%= form.text_field :numero, class: "form-control" %>
+    </div>
+    <div>
+        <%= form.label :capacidade %>
+        <%= form.text_field :capacidade,  class: "form-control" %>
+    </div>
+    <div class="field">
+        <%= form.label :turma_id, "Turma" %>
+        <%= form.collection_select :turma_id, Turma.all, :id, lambda { |turma| "#{turma.serie} Série - #{turma.nome} " }, { prompt: "Selecione uma turma" }, { class: "form-control" } %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Cadastrar", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<%= link_to "Voltar", salas_path, class: "btn btn-secondary" %>
