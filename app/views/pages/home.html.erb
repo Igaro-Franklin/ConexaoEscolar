@@ -1,24 +1,19 @@
-<button type="button" class="btn btn-primary">Primary</button>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+<h1>Lista de Turmas</h1>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<% @turmas.each do |turma| %>
+  <div class="card mb-4">
+    <div class="card-header">
+      <h2><%= turma.serie %> <%= turma.nome %></h2>
+      <p><strong>Professor:</strong> <%= turma.professor.nome if turma.professor %></p>
+      <p><strong>Sala:</strong> <%= turma.sala.numero if turma.sala %></p>
+    </div>
+    <div class="card-body">
+      <h3>Alunos</h3>
+      <ul class="list-group">
+        <% turma.alunos.order(:nome).each do |aluno| %>
+          <li class="list-group-item"><%= aluno.nome %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-</div>
+<% end %>
