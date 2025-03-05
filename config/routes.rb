@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   root "pages#home"
 
   resources :alunos, only: [ :index, :new, :create, :edit, :update, :destroy ]
