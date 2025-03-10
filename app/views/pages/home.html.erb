@@ -1,19 +1,22 @@
-<h1>Lista de Turmas</h1>
+<div class="container mt-5 p-3 shadow">
+  <h1>Lista de Turmas</h1>
 
-<% @turmas.each do |turma| %>
-  <div class="card mb-4">
-    <div class="card-header">
-      <h2><%= turma.serie %> <%= turma.nome %></h2>
-      <p><strong>Professor "Padrinho":</strong> <%= turma.professor.nome if turma.professor %></p>
-      <p><strong>Sala:</strong> <%= turma.sala.numero if turma.sala %></p>
+  <% @turmas.each do |turma| %>
+    <div class="card mb-4 shadow-lg rounded">
+      <div class="card-header">
+        <h2><%= turma.serie %>º <%= turma.nome %></h2>
+        <p><strong>Professor "Padrinho":</strong> <%= turma.professor.nome if turma.professor %></p>
+        <p><strong>Sala:</strong> <%= turma.sala.numero if turma.sala %></p>
+      </div>
+      <div class="card-body">
+        <h3>Alunos</h3>
+        <ul class="list-group">
+          <% turma.alunos.order(:nome).each do |aluno| %>
+            <li class="list-group-item mb-2"><%= aluno.nome %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="card-body">
-      <h3>Alunos</h3>
-      <ul class="list-group">
-        <% turma.alunos.order(:nome).each do |aluno| %>
-          <li class="list-group-item"><%= aluno.nome %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+
+</div>
