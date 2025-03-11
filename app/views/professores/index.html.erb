@@ -1,25 +1,28 @@
-<h1>Lista de Professores(as)</h1>
+<div class="container d-flex justify-content-between align-items-center p-2">
+    <h1>Lista de Professores(as)</h1>
+    <%= link_to "Cadastrar Professor", new_professore_path, class: "btn btn-primary mb-3" %>
+</div>
 
-<%= link_to "Cadastrar Professor", new_professore_path, class: "btn btn-primary mb-3" %>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Materia</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @professores.each do |professor| %>
+<div class="container p-5">
+    <table class="table able-striped table-bordered">
+        <thead>
             <tr>
-                <td><%= professor.nome %></td>
-                <td><%= professor.especializacao %></td>
-                <td>
-                    <%= link_to "Editar", edit_professore_path(professor), class: "btn btn-warning" %>
-                    <%= link_to "Excluir", professore_path(professor), method: :delete, data: { confirm: "Você tem certeza?" }, class: "btn btn-danger" %>
-                </td>
+                <th>Nome</th>
+                <th>Materia</th>
+                <th class="text-center">Ações</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @professores.each do |professor| %>
+                <tr>
+                    <td><%= professor.nome %></td>
+                    <td><%= professor.especializacao %></td>
+                    <td class="d-flex justify-content-center gap-2">
+                        <%= link_to "Editar", edit_professore_path(professor), class: "btn btn-warning" %>
+                        <%= link_to "Excluir", professore_path(professor), method: :delete, data: { confirm: "Você tem certeza?" }, class: "btn btn-danger" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
