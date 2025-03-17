@@ -1,29 +1,33 @@
-<h1>Editar Aluno</h1>
+<div class="container d-flex justify-content-between align-items-center p-2">
+  <h1>Editar Aluno</h1>
+</div>
 
-<%= form_with(model: @aluno, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome, class: "form-control" %>
-  </div>
+<div class="container">
+  <%= form_with(model: @aluno, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :nome, class:"form-label" %>
+      <%= form.text_field :nome, class: "form-control mb-2" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :data_nascimento, "Data de Nascimento" %>
-    <%= form.date_field :data_nascimento, class: "form-control" %>
-  </div>
+    <div class="field">
+      <%= form.label :data_nascimento, "Data de Nascimento", class:"form-label" %>
+      <%= form.date_field :data_nascimento, class: "form-control mb-2" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :matricula, "Matrícula" %>
-    <%= form.text_field :matricula, class: "form-control" %>
-  </div>
+    <div class="field">
+      <%= form.label :matricula, "Matrícula", class:"form-label" %>
+      <%= form.text_field :matricula, class: "form-control mb-2" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :turma_id, "Turma" %>
-    <%= form.collection_select :turma_id, Turma.all, :id, lambda { |turma| "#{turma.serie} Série - #{turma.nome} " }, { prompt: "Selecione uma turma" }, { class: "form-control" } %>
-  </div>
+    <div class="field">
+      <%= form.label :turma_id, "Turma", class:"form-label" %>
+      <%= form.collection_select :turma_id, Turma.all, :id, lambda { |turma| "#{turma.serie} Série - #{turma.nome} " }, { prompt: "Selecione uma turma" }, { class: "form-control mb-2" } %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "Atualizar", class: "btn btn-success" %>
-  </div>
-<% end %>
+    <div class="actions gap-2 d-flex justify-content-end mt-3">
+      <%= form.submit "Atualizar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", alunos_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to "Cancelar", alunos_path, class: "btn btn-secondary" %>
