@@ -9,27 +9,31 @@
   </div>
 <% end %>
 
-<h1>Cadastrar Turma</h1>
+<div class="container d-flex justify-content-between align-items-center p-2">
+  <h1>Cadastrar Turma</h1>
+</div>
 
-<%= form_with(model: @turma, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome, class: "form-control" %>
-  </div>
+<div class="container">
+  <%= form_with(model: @turma, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :nome, class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :serie %> 
-    <%= form.number_field :serie, class: "form-control" %>
-  </div>
+    <div class="field">
+      <%= form.label :serie,  class: "form-label"  %> 
+      <%= form.number_field :serie, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :professor_id, "Professor Responsável" %>
-    <%= form.collection_select :professor_id, Professor.all, :id, :nome, { prompt: "Selecione um professor" }, class: "form-control" %>
-  </div>
+    <div class="field mt-1">
+      <%= form.label :professor_id, "Professor Responsável", class: "form-label"  %>
+      <%= form.collection_select :professor_id, Professor.all, :id, :nome, { prompt: "Selecione um professor" }, class: "form-control" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "Cadastrar", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="actions gap-2 d-flex justify-content-end mt-3">
+      <%= form.submit "Cadastrar", class: "btn btn-primary" %>
 
-<%= link_to "Voltar", turmas_path, class: "btn btn-secondary" %>
+      <%= link_to "Voltar", turmas_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

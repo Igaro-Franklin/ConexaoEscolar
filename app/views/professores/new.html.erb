@@ -1,17 +1,20 @@
-<h1>Cadastrar Professor(a)</h1>
+<div class="container d-flex justify-content-between align-items-center p-2">
+    <h1>Cadastrar Professor(a)</h1>
+</div>
 
-<%= form_with(model: @professor, url: professores_path, local: true) do |form| %>
-    <div class="field">
-        <%= form.label :nome %>
-        <%= form.text_field :nome, class: "form-control" %>
-    </div>
-    <div class="field">
-        <%= form.label :especializacao%>
-        <%= form.text_field :especializacao, class: "form-control" %>
-    </div>
-    <div class="field">
-        <%= form.submit "Cadastrar", class: "btn btn-primary" %>
-    </div>
-<% end %>
-
-<%= link_to "Voltar", professores_path, class: "btn btn-secondary" %>
+<div class= "container">
+    <%= form_with(model: @professor, url: professores_path, local: true) do |form| %>
+        <div class="field">
+            <%= form.label :nome, class: "form-label" %>
+            <%= form.text_field :nome, class: "form-control mb-2" %>
+        </div>
+        <div class="field">
+            <%= form.label :especializacao, class: "form-label"%>
+            <%= form.text_field :especializacao, class: "form-control mb-2" %>
+        </div>
+        <div class="field gap-2 d-flex justify-content-end mt-3">
+            <%= form.submit "Cadastrar", class: "btn btn-primary" %>
+            <%= link_to "Voltar", professores_path, class: "btn btn-secondary" %>
+        </div>
+    <% end %>
+</div>
